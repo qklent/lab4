@@ -16,21 +16,23 @@ public:
 
     Database() {
         char buffer[] = "accounts.txt";
-        filename = (char*)std::malloc(sizeof(buffer));
+        filename = (char*)std::malloc(strlen(buffer) + 1);
         strcpy(filename, buffer);
         n = 0;
     }
 
     Database(char* filename){
-        this -> filename = (char*)std::malloc(sizeof(filename));
-        strcpy(this -> filename, filename);
+        this -> filename = filename;
         n = 0;
     }
 
     ~Database() {
         std::cout << "~Database\n";
-        // accounts.clear();
-        // std::free(filename);
+        for (auto& obj : accounts) {
+            delete obj;
+        }
+        accounts.clear();
+        std::free(filename);
     }
 
 
@@ -41,9 +43,9 @@ public:
     //     deposit.init();
     // }
 
-    void append(Account& account) {
-        account.init();
-        accounts.push_back(&account);
+    void append(Account* account) {
+        account -> init();
+        accounts.push_back(account);
         n++;
     }
 

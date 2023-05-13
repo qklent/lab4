@@ -27,6 +27,11 @@ public:
         this -> interest_rate = otherCredit.interest_rate;
     }
 
+    ~Credit() override {
+        std::cout << "~Credit\n";
+    }
+
+
     int get_credit_card_number(){
         return this -> credit_card_number;
     }

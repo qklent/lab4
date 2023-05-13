@@ -7,21 +7,22 @@
 #include "utils.h"
 
 
-//in utils create a normal choose function
-//so that u can use whatever database u want
-//and after using save func on 1 database program should not stop
-//because we still haven't saved other database
-//save function stopped working btw(doesn't write to the file)
-//fio search also doesn't work! Hooray!
-//'ve got memory leak in database fio search(n in for loop is large number)
-//ошибка в том что я удаляю мапять в неиспользованной базе данных
+
+
+
+
+
 int main() {
     start();
-    // Deposit d;
-    // Fio fio;
-    // fio.init_fio();
-    // int a = 2;
-    // double b = 3;
-    // database_deposit.append(d);
-    // database_deposit.exit_program();
+    //database destructor(objects doesn't call destructor)
+    // char buffer[] = "deposit.txt";
+    // char* deposit_filename = (char*)std::malloc(strlen(buffer + 1));
+    // strcpy(deposit_filename, buffer);
+    // // char buffer2[] = "credit.txt";
+    // // char* credit_filename = (char*)std::malloc(strlen(buffer2) + 1);
+    // // strcpy(credit_filename, buffer2);
+    // // Database database_credit(credit_filename);
+    // // Database database_deposit(deposit_filename);
+    // std::cout << strcmp(deposit_filename, "deposit.txt");
 }
+

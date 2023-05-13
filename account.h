@@ -8,7 +8,8 @@ protected:
     Fio fio;
     static int count;
 public:
-    Account(){
+
+    Account() {
         Fio fio;
         this -> fio = fio;
     }
@@ -19,6 +20,10 @@ public:
 
     Account(const Account& otherAccount) {
         this -> fio = otherAccount.fio;
+    }
+
+    virtual ~Account (){ 
+        std::cout << "~Account\n";
     }
 
 

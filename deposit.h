@@ -26,6 +26,10 @@ public:
         this -> balance = otherDeposit.balance;
     }
 
+    ~Deposit() override {
+        std::cout << "~Deposit\n";
+    }
+
 
     int get_account_number(){
         return this -> account_number;

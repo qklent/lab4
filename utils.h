@@ -6,29 +6,32 @@
 #include <cstring>
 
 
-int switch_tree(Database database, int func_num);
-int choose_func(Database database);
+int switch_tree(Database& database, int func_num);
+int choose_func(Database& database);
 
 
 void start() {
-    char deposit_filename[] = "deposit.txt";
-    char credit_filename[] = "credit.txt";
+    char buffer[] = "deposit.txt";
+    char* deposit_filename = (char*)std::malloc(sizeof(buffer));
+    strcpy(deposit_filename, buffer);
+    char buffer2[] = "credit.txt";
+    char* credit_filename = (char*)std::malloc(sizeof(buffer2));
+    strcpy(credit_filename, buffer2);
     Database database_credit(credit_filename);
     Database database_deposit(deposit_filename);
     std::cout << "choose database\n";
     std::cout << "1 - deposit\n" << "2 - credit\n";
     int database_num = cin_int_in_range(1, 2);
-    int func_num;
     if (database_num == 1) { 
         while (true) {
-            if (choose_func(&database_deposit) == 1) {
+            if (choose_func(database_deposit) == 1) {
                 break;
             }
         }
     }
     else {
         while (true) {
-            if (choose_func(&database_credit) == 1) {
+            if (choose_func(database_credit) == 1) {
                 break;
             }
         }
@@ -36,7 +39,7 @@ void start() {
 }
 
 
-int choose_func(Database* database) {
+int choose_func(Database& database) {
     std::cout << "choose function\n";
     std::cout << "1 - add element\n2 - fio search\n3 - exit\n";
     int func_num = cin_int_in_range(1, 3);
@@ -44,15 +47,15 @@ int choose_func(Database* database) {
 }
 
 
-int switch_tree(Database* database, int func_num) {
+int switch_tree(Database& database, int func_num) {
     if (func_num == 1) {
-        if (!strcmp(database -> filename, "deposit.txt")) {
-            Deposit profile;// = new Deposit()
-            database -> append(profile);
+        if (!strcmp(database.filename, "deposit.txt")) {
+            Deposit* profile = new Deposit();
+            database.append(profile);
         }
         else {
-            Credit profile;
-            database -> append(profile);
+            Credit* profile = new Credit();
+            database.append(profile);
         }
     }   
     else {
@@ -60,10 +63,10 @@ int switch_tree(Database* database, int func_num) {
             std::cout << "enter the fio that you want to find\n";
             Fio fio;
             fio.init_fio();
-            database -> fio_search(fio);
+            database.fio_search(fio);
         }
         else {
-            database -> exit_program();
+            database.exit_program();
             return 1;
         }
     }

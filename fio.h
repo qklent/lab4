@@ -26,6 +26,8 @@ public:
         this -> last_name = otherFio.last_name;
     }
 
+    ~Fio() {};
+
     friend std::ostream& operator<<(std::ostream& os, const Fio& fio){
         os << fio.last_name << ' ' << fio.first_name << ' ' << fio.middle_name << '\n';
         return os;

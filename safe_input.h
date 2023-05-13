@@ -79,7 +79,7 @@ int cin_double_only_positive(){
 
 int cin_int_in_range(int left, int right){
     int a = cin_int();
-    while (!(left <= a & a <= right)){
+    while (!(left <= a && a <= right)){
         printf("enter int number from %d to %d\n", left, right);
         a = cin_int();
     }
@@ -88,7 +88,7 @@ int cin_int_in_range(int left, int right){
 
 int cin_double_in_range(double left, double right){
     double a = cin_double();
-    while (!(left <= a & a <= right)){
+    while (!(left <= a && a <= right)){
         printf("enter int number from %lf to %lf\n", left, right);
         a = cin_double();
     }
