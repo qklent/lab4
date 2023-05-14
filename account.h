@@ -9,18 +9,11 @@ protected:
     static int count;
 public:
 
-    Account() {
-        Fio fio;
-        this -> fio = fio;
-    }
+    Account(): fio(){}
 
-    Account(Fio fio){
-        this -> fio = fio;
-    }
+    Account(Fio fio): fio(fio){}
 
-    Account(const Account& otherAccount) {
-        this -> fio = otherAccount.fio;
-    }
+    Account(const Account& otherAccount): fio(otherAccount.fio){}
 
     virtual ~Account (){ 
         std::cout << "~Account\n";
