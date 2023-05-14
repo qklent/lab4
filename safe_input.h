@@ -67,8 +67,8 @@ int cin_int_only_positive(){
     return a;
 }
 
-int cin_double_only_positive(){
-    int a = cin_double();
+double cin_double_only_positive(){
+    double a = cin_double();
     while (a < 0){
         std::cout << "double only positive" << std::endl;
         a = cin_double();
@@ -86,7 +86,7 @@ int cin_int_in_range(int left, int right){
     return a;   
 }
 
-int cin_double_in_range(double left, double right){
+double cin_double_in_range(double left, double right){
     double a = cin_double();
     while (!(left <= a && a <= right)){
         printf("enter int number from %lf to %lf\n", left, right);

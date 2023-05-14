@@ -25,4 +25,3 @@ int main() {
     // // Database database_deposit(deposit_filename);
     // std::cout << strcmp(deposit_filename, "deposit.txt");
 }
-
